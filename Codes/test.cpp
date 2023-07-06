@@ -25,6 +25,7 @@ public:
     bool test_adding_request();
     bool test_pay_money();
     bool test_choose_supporter();
+    void test_run();
 };
 
 bool Test::test_reserve_package(/*check if capacity being reduced*/)
@@ -95,19 +96,16 @@ bool Test::test_choose_supporter()
     return false;
 }
 
-
-int main()
+void Test::test_run()
 {
-    Test* test = new Test();
-    if(!test->test_reserve_package())
+    if(!test_reserve_package())
         std::cout << "error in reserve_package method catched!\n";
-    else if(!test->test_adding_request())
+    else if(!test_adding_request())
         std::cout << "error in adding request catched!\n";
-    else if(!test->test_pay_money())
+    else if(!test_pay_money())
         std::cout << "error in pay money handler catched!\n";
-    else if(!test->test_choose_supporter())
+    else if(!test_choose_supporter())
         std::cout << "error in choose supporeter handler cathced!\n";
     else
         std::cout << "successfully done without any error!\n";
-    return 0;
 }
