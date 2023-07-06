@@ -1,32 +1,4 @@
-
-#include <iostream>
-
-#include "SignupHandler.hpp"
-#include "PatientService.hpp"
-
-#include "LoginHandler.hpp"
-
-#include "ChoosePackageHandler.hpp"
-#include "TreatmentPackageService.hpp"
-
-#include "PayMoneyHandler.hpp"
-
-#include "ChooseSupporterHandler.hpp"
-#include "SupporterService.hpp"
-
-#include "SendInfoHandler.hpp"
-#include "HCD_Service.hpp"
-
-class Test{
-private:
-public:
-    Test(){}
-    bool test_reserve_package();
-    bool test_adding_request();
-    bool test_pay_money();
-    bool test_choose_supporter();
-    void test_run();
-};
+#include "test.hpp"
 
 bool Test::test_reserve_package(/*check if capacity being reduced*/)
 {
@@ -96,8 +68,10 @@ bool Test::test_choose_supporter()
     return false;
 }
 
+
 void Test::test_run()
 {
+    Test* test = new Test();
     if(!test_reserve_package())
         std::cout << "error in reserve_package method catched!\n";
     else if(!test_adding_request())
