@@ -106,5 +106,7 @@ int main()
         std::cout << "error in pay money handler catched!\n";
     else if (!test->test_choose_supporter())
         std::cout << "error in choose supporeter handler cathced!\n";
+    else
+        std::cout << "successfully done without any error!\n";
     return 0;
 }
