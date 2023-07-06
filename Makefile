@@ -109,7 +109,7 @@ $(BUILD_DIR)/errors.o : Codes/errors.cpp Codes/errors.hpp
 $(BUILD_DIR)/DAO.o : Codes/DAO.cpp Codes/DAO.hpp
 	$(CC) $(CF) -c Codes/DAO.cpp -o $(BUILD_DIR)/DAO.o
 
-$(BUILD_DIR)/test.o : Codes/test.cpp Codes/SignupHandler.hpp Codes/PatientService.hpp Codes/LoginHandler.hpp Codes/ChoosePackageHandler.hpp Codes/TreatmentPackageService.hpp Codes/PayMoneyHandler.hpp Codes/ChooseSupporterHandler.hpp Codes/SupporterService.hpp Codes/SendInfoHandler.hpp Codes/HCD_Service.hpp
+$(BUILD_DIR)/test.o : Codes/test.cpp Codes/test.hpp Codes/SignupHandler.hpp Codes/PatientService.hpp Codes/LoginHandler.hpp Codes/ChoosePackageHandler.hpp Codes/TreatmentPackageService.hpp Codes/PayMoneyHandler.hpp Codes/ChooseSupporterHandler.hpp Codes/SupporterService.hpp Codes/SendInfoHandler.hpp Codes/HCD_Service.hpp
 	$(CC) $(CF) -c Codes/test.cpp -o $(BUILD_DIR)/test.o
 
 
