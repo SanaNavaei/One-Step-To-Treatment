@@ -14,11 +14,12 @@ bool Test::test_reserve_package(/*check if capacity being reduced*/)
 bool Test::test_adding_request()
 {
     Document* document = new Document("kindOfdisease, diseaseBackground");
-    BankCard* bank_card = new BankCard("9635456974128523","1211");
+    BankCard* bank_card = new BankCard("963523","1211");
     Patient * patient = new Patient("maryam", "1234", "maryam@gmail.com", "09144749754", document, bank_card);
     TreatmentPackage* package = new TreatmentPackage(2, "name", 1000, 1223, 3);
     TreatmentPackageService* TPS = new TreatmentPackageService();
     TPS->addPackage(package);
+
     ChoosePackageHandler* CPH = new ChoosePackageHandler(TPS);
     CPH->ChoosePackageTreatment(patient, 2);
     if(patient->getBill()->getDept() == 1000)
@@ -30,10 +31,12 @@ bool Test::test_adding_request()
 
 bool Test::test_pay_money()
 {
+
     Document* document = new Document("kindOfdisease, diseaseBackground");
-    BankCard* bank_card = new BankCard("9635456974128523","1211");
+    BankCard* bank_card = new BankCard("963523","1211");
     Patient * patient = new Patient("maryam", "1234", "maryam@gmail.com", "09144749754", document, bank_card);
     TreatmentPackage* package = new TreatmentPackage(2, "name", 1000, 1223, 3);
+    //PatientRequest* request = new PatientRequest(123, package);
     TreatmentPackageService* TPS = new TreatmentPackageService();
     TPS->addPackage(package);
     ChoosePackageHandler* CPH = new ChoosePackageHandler(TPS);
@@ -50,10 +53,13 @@ bool Test::test_choose_supporter()
 {
     SupporterService* supS = new SupporterService();
     ChooseSupporterHandler* CSH = new ChooseSupporterHandler(supS);
+    Supporter* supporter = new Supporter("name", 3, "email", "phonenumber", "available");
+    supS->addSupporter(supporter);
     Document* document = new Document("kindOfdisease, diseaseBackground");
-    BankCard* bank_card = new BankCard("9635456974128523","1211");
+    BankCard* bank_card = new BankCard("963523","1211");
     Patient * patient = new Patient("maryam", "1234", "maryam@gmail.com", "09144749754", document, bank_card);
     TreatmentPackage* package = new TreatmentPackage(2, "name", 1000, 1223, 3);
+    //PatientRequest* request = new PatientRequest(123, package);
     TreatmentPackageService* TPS = new TreatmentPackageService();
     TPS->addPackage(package);
     ChoosePackageHandler* CPH = new ChoosePackageHandler(TPS);
@@ -65,13 +71,13 @@ bool Test::test_choose_supporter()
         if(patient->getSup() == sup)
             if(request->getStatus() == "sup assigned")
                 return true;
+                
     return false;
 }
 
 
 void Test::test_run()
 {
-    Test* test = new Test();
     if(!test_reserve_package())
         std::cout << "error in reserve_package method catched!\n";
     else if(!test_adding_request())
@@ -81,5 +87,5 @@ void Test::test_run()
     else if(!test_choose_supporter())
         std::cout << "error in choose supporeter handler cathced!\n";
     else
-        std::cout << "successfully done without any error!\n";
+        std::cout << "passed all tests! successfully done!\n";
 }
